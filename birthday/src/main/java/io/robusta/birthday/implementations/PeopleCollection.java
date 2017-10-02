@@ -32,6 +32,16 @@ public class PeopleCollection extends ArrayList<People>implements IPeopleCollect
 		/* return true if two people of the same collection has
 		 same birthday
 		  */
+		for(int index = 0; index < this.size() - 1; index++)
+		{
+			for(int jndex = index + 1; jndex < this.size(); jndex++)
+			{
+				if( this.get(index).equals( this.get(jndex) ) )
+				{
+					return true;
+				}
+			}
+		}
 		
 		return false;
 	}

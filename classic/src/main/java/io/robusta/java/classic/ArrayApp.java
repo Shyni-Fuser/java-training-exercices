@@ -8,33 +8,81 @@ public class ArrayApp {
 
 
     String[] buildEmptyArray(int size){
-        return null;
+        String[] emptyArray = new String[size];
+    	return emptyArray;
     }
 
     int[] buildArray(int a, int b, int c){
-        return null;
+    	int[] array = {a, b, c};
+        return array;
     }
 
 
     boolean equality(int[] array1, int[] array2){
-
-        return false;
+    	
+    	int length1 = array1.length;
+    	int length2 = array2.length;
+    	if(length1 != length2)
+    	{
+    		return false;
+    	}
+    	
+    	for(int i = 0; i < length1; i++)
+    	{
+    		if(array1[i]==array2[i])
+    		{
+    			if(i == length1 - 1)
+    			{
+    				return true;
+    			}
+    			continue;
+    		}
+    	}
+    	return false;
     }
 
     String asString (int [] numbers){
-        return null;
+    	String chaine = "";
+    	for(int i = 0; i < numbers.length; i++)
+    	{
+    		chaine += Integer.toString(numbers[i]) + ":";
+    	}
+        return chaine;
     }
 
     String asStringJoin (int [] numbers){
-        return null;
+    	String chaine = "";
+    	int length = numbers.length;
+    	for(int i = 0; i < length; i++)
+    	{
+    		chaine += Integer.toString(numbers[i]) + ":";
+    	}
+    	
+        return chaine.substring(0, chaine.length() - 1);
     }
 
     String asString (String [] strings){
-        return null;
+    	String chaine = "";
+    	int length = strings.length;
+    	for(int i = 0; i < length; i++)
+    	{
+    		chaine += strings[i] + " ";
+    	}
+    	return chaine.substring(0, chaine.length() - 1);
     }
 
     String asString (Card [] cards){
-        return null;
+    	System.out.println();
+    	String chaine = "[";
+    	int length = cards.length;
+    	for(int i = 0; i < length; i++)
+    	{
+    		chaine += cards[i].toString() + " ";
+    	}
+    	chaine = chaine.substring(0, chaine.length() - 1);
+    	chaine += "]";
+    	
+        return chaine;
     }
 
 }

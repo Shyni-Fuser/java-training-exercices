@@ -32,7 +32,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
         assertEquals(map.get(1), "John");
         assertEquals(map.get(18), "Jim");
@@ -46,7 +46,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
         Set<Integer> keySet = app.getKeys(map);
         assertTrue(keySet.contains(1));
@@ -62,7 +62,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map = app.buildMapArrays(keys, values);
 
         List<Integer> keySet = app.getKeysAsList(map);
         assertTrue(keySet.contains(1));
@@ -78,7 +78,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map = app.buildMapArrays(keys, values);
 
         Set<Entry<Integer, String>> entrySet = app.getEntries(map);
         assertTrue(entrySet.size() == 3);
@@ -90,7 +90,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
         List<String> allValues = app.getValues(map);
 
         assertTrue(allValues.contains("Jim"));
@@ -105,7 +105,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"Jim","John","Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
         String[] selectedValues= app.getValuesFromMap(map,1,5);
 
@@ -137,7 +137,7 @@ public class MapAppTest {
         //use map.entrySet() to display the map
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
         String expectedDisplay = "John->1:Jim->18:Jane->5:";
         assertEquals(expectedDisplay, app.displayMap(map));
@@ -152,7 +152,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
 
         // little help for using entries
@@ -184,7 +184,7 @@ public class MapAppTest {
         int[] keys={1,18, 5};
         String[] values = {"John", "Jim", "Jane"};
 
-        Map<Integer, String> map= app.buildMap(keys, values);
+        Map<Integer, String> map= app.buildMapArrays(keys, values);
 
         List<Integer> keysFromValue= app.getKeysHavingValueAnyValue(map, "John", "Jim");
 

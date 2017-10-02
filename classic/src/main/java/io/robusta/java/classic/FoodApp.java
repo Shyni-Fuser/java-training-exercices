@@ -14,17 +14,24 @@ public class FoodApp {
 
 
     void reset(){
-
+    	money = 0;
+        foodStock = 1000;
     }
 
     int deliver(int food){
-
-        return 0;
+    	
+    	int gross = 2*food;
+    	foodStock -= food;
+    	money += gross - FoodApp.TRAVEL_COST; 
+        return gross;
     }
 
     int deliverAll(int count, int food){
 
-        return 0;
+    	int gross = 2*food*count;
+    	foodStock -= food*count;
+    	money += gross - FoodApp.TRAVEL_COST*count; 
+        return gross;
     }
 
 

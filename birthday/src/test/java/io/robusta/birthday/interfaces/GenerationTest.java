@@ -38,7 +38,7 @@ public class GenerationTest {
     }
 
     @Test
-    public void getPeopleCollection() throws Exception {
+    public void getPeopleCollections() throws Exception {
         Generation generation = new Generation(5, 100);
         assertTrue(generation.getPeopleCollections().size() == 5);
         assertTrue(generation.getPeopleCollections().get(3).size() == 100);
@@ -53,7 +53,7 @@ public class GenerationTest {
 
         // 366 people : all should have same
         generation = new Generation(100, 366);
-        assertTrue(generation.getNumberOfCollectionsThatHasTwoPeopleWithSameBirthday() == 100);
+        assertEquals(generation.getNumberOfCollectionsThatHasTwoPeopleWithSameBirthday(), 100);
 
         // 30 people : some should have same
         generation = new Generation(100, 30);

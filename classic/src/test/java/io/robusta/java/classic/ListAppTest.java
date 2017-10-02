@@ -43,9 +43,6 @@ public class ListAppTest {
 
         assertTrue(app.equality(list1, list2));
         assertFalse(app.equality(list1, list3));
-
-
-
     }
 
     @Test

@@ -10,33 +10,34 @@ import java.util.ArrayList;
  */
 public class GenerationThreshold implements IGenerationThreshold{
 
+	Generation generation;
 
     public GenerationThreshold() {
 
 
+    }
+    public GenerationThreshold(int threshold) {
+    	
+    	this.generation = new Generation(100, threshold);
 
     }
 
-
-    @Override
-    public int getSmallNumber() {
-        return 0;
-    }
-
-    @Override
-    public int getBigNumber() {
-        return 0;
-    }
-
-    @Override
-    public int findSmallestNumberOfPeopleRequiredToHave50() {
-        return 0;
-    }
-
-
-	@Override
-	public float calculateProbabilityOfSame(int size) {
-		// TODO Auto-generated method stub
-		return 0;
+    
+    public static void main(String[] args) {
+		
+		
+		
+		for(int threshold = 0; threshold < 100; threshold++)
+    	{
+			GenerationThreshold app = new GenerationThreshold(threshold);
+    		
+    		if(!(app.generation.isLessThan50()))
+    		{
+    			System.out.println(threshold);
+    			break;
+    		}
+    	}		
+		return;
 	}
+
 }
