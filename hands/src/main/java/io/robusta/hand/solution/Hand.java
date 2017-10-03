@@ -1,12 +1,9 @@
 package io.robusta.hand.solution;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import io.robusta.hand.Card;
+import io.robusta.hand.CardColor;
 import io.robusta.hand.HandClassifier;
 import io.robusta.hand.HandValue;
 import io.robusta.hand.interfaces.IDeck;
@@ -18,12 +15,11 @@ public class Hand extends TreeSet<Card> implements IHand {
 
     private static final long serialVersionUID = 7824823998655881611L;
 
-  
-
 
     /**
      * beats is the same than compareTo, but with a nicer name.
      * The problem is that it does not handle equality :(
+     *
      * @param villain
      * @return
      */
@@ -46,12 +42,50 @@ public class Hand extends TreeSet<Card> implements IHand {
     @Override
     public boolean isStraight() {
 
-        return false;
+        TreeSet<Integer> values = new TreeSet<>();
+        for(Card current : this)
+        {
+            values.add(current.getValue());
+        }
+
+        Iterator<Integer> it = values.iterator();
+        int prev = it.next();
+
+        while(it.hasNext())
+        {
+            int next = it.next();
+            if(prev == next - 1)
+            {
+                prev = next;
+                continue;
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean isFlush() {
 
+        TreeSet<CardColor> colors = new TreeSet<>();
+        for(Card current : this)
+        {
+            colors.add(current.getColor());
+        }
+
+        Iterator<CardColor> it = colors.iterator();
+        CardColor prev = it.next();
+
+        while(it.hasNext())
+        {
+            CardColor next = it.next();
+            if(prev.equals(next))
+            {
+                prev = next;
+                continue;
+            }
+            return false;
+        }
         return true;
     }
 
@@ -80,7 +114,23 @@ public class Hand extends TreeSet<Card> implements IHand {
     public Map<Integer, List<Card>> group() {
         HashMap<Integer, List<Card>> map = new HashMap<>();
 
-        // fill the map
+        List<Integer> values = new ArrayList<>();
+        for(Card current : this)
+        {
+            values.add(current.getValue());
+        }
+
+        TreeSet<Integer> keys = new TreeSet<>(values);
+        List<Card> listCards[] = new List[keys.size()];
+
+        for(int i = 0; i < values.size(); i++)
+        {
+            listCards[i] = this.
+        }
+
+
+
+
 
         return map;
     }
@@ -170,14 +220,33 @@ public class Hand extends TreeSet<Card> implements IHand {
         if (this.isFourOfAKind()) {
             handValue.setClassifier(HandClassifier.FOUR_OF_A_KIND);
             handValue.setLevelValue(this.levelValue);
-            handValue.setSingleCards(this.singleCards); // or this.getsingleCards()
+            handValue.setSingleCards(this.singleCards); // or this.getSingleCards()
             return handValue;
         }
 
         // For the flush, all singleCards are needed
+        if (this.isFlush()) {
+            if (this.isStraight()) {
+                handValue.setClassifier(HandClassifier.STRAIGHT_FLUSH);
+            } else {
+                handValue.setClassifier(HandClassifier.FLUSH);
+            }
+            handValue.setLevelValue(this.levelValue);
+            handValue.setSingleCards(this.singleCards); // or this.getSingleCards()
+            return handValue;
+        }
 
-        return handValue;
+        if (this.isStraight()) {
+
+                handValue.setClassifier(HandClassifier.STRAIGHT);
+                handValue.setLevelValue(this.levelValue);
+                handValue.setSingleCards(this.singleCards); // or this.getSingleCards()
+                return handValue;
+            }
+
+            return handValue;
     }
+
 
 
     @Override
@@ -198,7 +267,6 @@ public class Hand extends TreeSet<Card> implements IHand {
         // ace might be the highest value
         return 0;
     }
-
 
 
     @Override

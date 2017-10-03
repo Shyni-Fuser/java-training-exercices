@@ -24,9 +24,7 @@ public class IDeckTest extends PokerTest{
 	@Before
 	public void setUp() throws Exception {
 	
-		
-		this.deck = new DeckGenerator().generate();
-		
+		this.deck = new DeckGenerator().generate();		
 	}
 
 	@After
